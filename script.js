@@ -8,5 +8,5 @@ document.getElementById('orderForm').addEventListener('submit', function(event) 
     const subject = `Pedido de ${product}`;
     const body = `Producto: ${product}%0ACantidad: ${quantity}%0AEmail: ${email}`;
 
-    window.location.href = `mailto:tucorreo@example.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:alexexposito88@gmail.com?subject=${subject}&body=${body}`;
 });
