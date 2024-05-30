@@ -19,9 +19,16 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        label, input, button {
+        label, input, select, button {
             display: block;
             margin: 10px 0;
+        }
+        .confirmation {
+            color: green;
+            margin-top: 20px;
+        }
+        .product-container {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -29,14 +36,36 @@
     <div class="container">
         <h1>Pedido de Producto</h1>
         <form id="orderForm">
-            <label for="product">Producto:</label>
-            <input type="text" id="product" name="product" required>
-            <label for="quantity">Cantidad:</label>
-            <input type="number" id="quantity" name="quantity" required min="1">
+            <div class="product-container">
+                <h2>Camiseta</h2>
+                <label for="camisetaS">Talla S:</label>
+                <input type="number" id="camisetaS" name="camisetaS" min="0" value="0">
+                <label for="camisetaM">Talla M:</label>
+                <input type="number" id="camisetaM" name="camisetaM" min="0" value="0">
+                <label for="camisetaXL">Talla XL:</label>
+                <input type="number" id="camisetaXL" name="camisetaXL" min="0" value="0">
+            </div>
+            <div class="product-container">
+                <label for="mascota"><h2>Mascota Negreta:<h2></label>
+                <input type="number" id="mascota" name="mascota" min="0" value="0">
+            </div>
+            <div class="product-container">
+                <label for="llavero"><h2>Llavero:</h2></label>
+                <input type="number" id="llavero" name="llavero" min="0" value="0">
+            </div>
+            <div class="product-container">
+                <label for="otro"><h2>Otro:</h2></label>
+                <input type="number" id="otro" name="otro" min="0" value="0">
+            </div>
             <label for="email">Tu Email:</label>
             <input type="email" id="email" name="email" required>
             <button type="submit">Enviar Pedido</button>
         </form>
+        <div class="confirmation" id="confirmationMessage"></div>
+        <div class="product-container">
+            <label>Total:</label>
+            <input type="text" id="total" name="total" readonly>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
