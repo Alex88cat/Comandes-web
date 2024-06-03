@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         totalField.value = `${total}€`;
     }
 
-    function generateEmailBody() {
+    function getFormData() {
         const camisetaS = document.getElementById('camisetaS').value;
         const camisetaM = document.getElementById('camisetaM').value;
         const camisetaXL = document.getElementById('camisetaXL').value;
@@ -35,18 +35,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const otro = document.getElementById('otro').value;
         const email = document.getElementById('email').value;
 
-        let body = `<h2>Pedido de productos</h2><table border="1"><tr><th>Producto</th><th>Cantidad</th></tr>`;
-
-        if (camisetaS > 0) body += `<tr><td>Camisetas (Talla S)</td><td>${camisetaS}</td></tr>`;
-        if (camisetaM > 0) body += `<tr><td>Camisetas (Talla M)</td><td>${camisetaM}</td></tr>`;
-        if (camisetaXL > 0) body += `<tr><td>Camisetas (Talla XL)</td><td>${camisetaXL}</td></tr>`;
-        if (mascota > 0) body += `<tr><td>Mascotas Negreta</td><td>${mascota}</td></tr>`;
-        if (llavero > 0) body += `<tr><td>Llaveros</td><td>${llavero}</td></tr>`;
-        if (otro > 0) body += `<tr><td>Otros</td><td>${otro}</td></tr>`;
-
-        body += `</table><br><strong>Total: ${totalField.value}</strong><br><br>Email del cliente: ${email}`;
-
-        return body;
+        return {
+            camisetaS: parseInt(camisetaS, 10) || 0,
+            camisetaM: parseInt(camisetaM, 10) || 0,
+            camisetaXL: parseInt(camisetaXL, 10) || 0,
+            mascota: parseInt(mascota, 10) || 0,
+            llavero: parseInt(llavero, 10) || 0,
+            otro: parseInt(otro, 10) || 0,
+            email: email,
+            total: totalField.value
+        };
     }
 
     form.addEventListener('input', calculateTotal);
@@ -54,18 +52,24 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const camisetaS = document.getElementById('camisetaS').value;
-        const camisetaM = document.getElementById('camisetaM').value;
-        const camisetaXL = document.getElementById('camisetaXL').value;
-        const mascota = document.getElementById('mascota').value;
-        const llavero = document.getElementById('llavero').value;
-        const otro = document.getElementById('otro').value;
-        const email = document.getElementById('email').value;
+        const formData = getFormData();
 
-        if (email && (camisetaS > 0 || camisetaM > 0 || camisetaXL > 0 || mascota > 0 || llavero > 0 || otro > 0)) {
-            const subject = 'Pedido de Productos';
-            const body = generateEmailBody();
-            window.location.href = `mailto:alexexposito88@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}&html=true`;
+        if (formData.email && (formData.camisetaS > 0 || formData.camisetaM > 0 || formData.camisetaXL > 0 || formData.mascota > 0 || formData.llavero > 0 || formData.otro > 0)) {
+            fetch('/api/pedido', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                confirmationMessage.textContent = '¡Pedido enviado exitosamente!';
+            })
+            .catch(error => {
+                confirmationMessage.textContent = 'Hubo un error al enviar el pedido.';
+                console.error('Error:', error);
+            });
         } else {
             confirmationMessage.textContent = 'Por favor, completa todos los campos correctamente.';
         }
