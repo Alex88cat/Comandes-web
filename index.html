@@ -1,72 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedido de Producto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+<!DOCTYPE html >
+< html  lang =" es " >
+< cabeza >
+    < meta  juego de caracteres =" UTF-8 " >
+    < meta  nombre =" ventana gráfica " contenido =" ancho = ancho del dispositivo, escala inicial = 1,0 " >
+    < título > Pedido de Producto </ título >
+    <estilo>​​
+        cuerpo {
+            familia de fuentes: Arial, sans-serif;
+            pantalla: flexible;
+            justificar-contenido: centro;
+            alinear elementos: centro;
+            altura: 100vh;
+            color de fondo: #f0f0f0;
         }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .envase {
+            color de fondo: blanco;
+            relleno: 20px;
+            radio del borde: 10px;
+            sombra de cuadro: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        label, input, select, button {
-            display: block;
-            margin: 10px 0;
+        etiqueta, entrada, botón {
+        etiqueta, entrada, seleccionar, botón {
+            bloqueo de pantalla;
+            margen: 10px 0;
         }
-        .confirmation {
-            color: green;
-            margin-top: 20px;
+        .confirmación {
+            color verde;
+            margen superior: 20px;
         }
-        .product-container {
-            margin-bottom: 20px;
+        .contenedor-producto {
+            margen inferior: 20px;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Pedido de Producto</h1>
-        <form id="orderForm">
-            <div class="product-container">
-                <h2>Camiseta</h2>
-                <label for="camisetaS">Cantidad (Talla S):</label>
-                <input type="number" id="camisetaS" name="camisetaS" min="0" value="0">
-                <label for="camisetaM">Cantidad (Talla M):</label>
-                <input type="number" id="camisetaM" name="camisetaM" min="0" value="0">
-                <label for="camisetaXL">Cantidad (Talla XL):</label>
-                <input type="number" id="camisetaXL" name="camisetaXL" min="0" value="0">
-            </div>
-            <div class="product-container">
-                <label for="mascota">Mascota Negreta:</label>
-                <input type="number" id="mascota" name="mascota" min="0" value="0">
-            </div>
-            <div class="product-container">
-                <label for="llavero">Llavero:</label>
-                <input type="number" id="llavero" name="llavero" min="0" value="0">
-            </div>
-            <div class="product-container">
-                <label for="otro">Otro:</label>
-                <input type="number" id="otro" name="otro" min="0" value="0">
-            </div>
-            <label for="email">Tu Email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Enviar Pedido</button>
-        </form>
-        <div class="confirmation" id="confirmationMessage"></div>
-        <div class="product-container">
-            <label>Total:</label>
-            <input type="text" id="total" name="total" readonly>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+    </estilo>​​
+</cabeza>​​
+< cuerpo >
+    < div  clase =" contenedor " >
+        < h1 > Pedido de Producto </ h1 >
+        < id del formulario  =" formulario de pedido " >
+            < etiqueta  para =" producto " > Producto: </ etiqueta >
+            < tipo de entrada  =" texto " id =" producto " nombre =" producto " requerido >
+            < etiqueta  para =" cantidad " > Cantidad: </ etiqueta >
+            < tipo de entrada  =" número " id =" cantidad " nombre =" cantidad " requerida min =" 1 " > 
+            < div  class =" contenedor-producto " >
+                < h2 > Camiseta </ ​​h2 >
+                < etiqueta  para =" camisetaS " > Talla S: </ etiqueta >
+                < tipo de entrada  =" número " id =" camisetaS " nombre =" camisetaS " min =" 0 " valor =" 0 " >
+                < etiqueta  para =" camisetaM " > Talla M: </ etiqueta >
+                < tipo de entrada  =" número " id =" camisetaM " nombre =" camisetaM " min =" 0 " valor =" 0 " >
+                < etiqueta  para =" camisetaXL " > Talla XL: </ etiqueta >
+                < tipo de entrada  =" número " id =" camisetaXL " nombre =" camisetaXL " min =" 0 " valor =" 0 " >
+            </div>​​
+            < div  class =" contenedor-producto " >
+                < label  for =" mascota " > < h2 > Mascota Negreta: < h2 > </ label >
+                < tipo de entrada  =" número " id =" mascota " nombre =" mascota " min =" 0 " valor =" 0 " >
+            </div>​​
+            < div  class =" contenedor-producto " >
+                < etiqueta  para =" llavero " > < h2 > Llavero: </ h2 > </ etiqueta >
+                < tipo de entrada  =" número " id =" llavero " nombre =" llavero " min =" 0 " valor =" 0 " >
+            </div>​​
+            < div  class =" contenedor-producto " >
+                < etiqueta  para =" otro " > < h2 > Otro: </ h2 > </ etiqueta >
+                < tipo de entrada  =" número " id =" otro " nombre =" otro " min =" 0 " valor =" 0 " >
+            </div>​​
+            < etiqueta  para =" correo electrónico " > Tu correo electrónico: </ etiqueta >
+            < tipo de entrada  =" correo electrónico " id =" correo electrónico " nombre =" correo electrónico " requerido >
+            < tipo de botón  =" enviar " > Enviar Pedido </ botón >
+        </ formulario >
+        < div  clase =" confirmación " id =" mensaje de confirmación " > </ div >
+        < div  class =" contenedor-producto " >
+            < etiqueta > Total: </ etiqueta >
+            < tipo de entrada  =" texto " id =" total " nombre =" total " solo lectura >
+        </div>​​
+    </div>​​
+    < script  src =" script.js " > </ script >
+</cuerpo>​​
 </html>
